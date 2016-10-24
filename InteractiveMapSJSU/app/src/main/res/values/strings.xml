@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">InteractiveMapSJSU</string>
+    <string name="search_by_building_abbreviation">Search by building abbreviation</string>
+</resources>
