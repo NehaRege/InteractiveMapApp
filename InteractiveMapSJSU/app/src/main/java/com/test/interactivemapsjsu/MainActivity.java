@@ -1,5 +1,6 @@
 package com.test.interactivemapsjsu;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "KING !!!!", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this,KingActivity.class);
+                intent.putExtra("king_key","king");
+
+                startActivity(intent);
+
+
+
             }
         });
 
