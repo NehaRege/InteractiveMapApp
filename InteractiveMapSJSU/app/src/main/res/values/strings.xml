@@ -3,4 +3,6 @@
     <string name="search_by_building_abbreviation">Search by building abbreviation</string>
     <string name="street_view">Street View</string>
     <string name="building_name">Building Name</string>
+    <string name="location_services_lat">location_services_lat</string>
+    <string name="location_services_long">location_services_long</string>
 </resources>
