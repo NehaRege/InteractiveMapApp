@@ -21,9 +21,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by NehaRege on 10/25/16.
+ * Created by NehaRege on 10/26/16.
  */
-public class KingActivity extends AppCompatActivity {
+public class EnggActivity extends AppCompatActivity {
+
 
     String TAG = "KingActivity";
 
@@ -81,13 +82,16 @@ public class KingActivity extends AppCompatActivity {
 
             Log.i(TAG, "onCreate: setting text");
 
-            textViewName.setText(R.string.library_name);
-            textViewAdd.setText(R.string.library_address);
-            image.setImageResource(R.drawable.library);
+            textViewName.setText(R.string.engineering_building_name);
+            textViewAdd.setText(R.string.engg_building_address);
+            image.setImageResource(R.drawable.campusmap);
 
             Log.i(TAG, "onCreate: before set text --------");
             Log.i(TAG, "onCreate: duration = "+duration);
             Log.i(TAG, "onCreate: distance = "+distance);
+
+//            textViewTime.setText(duration);
+//            textViewDist.setText(distance);
 
 
         }
@@ -117,7 +121,7 @@ public class KingActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         APIService request = retrofit.create(APIService.class);
-        Call<TimeDistanceModel> call = request.getTimeDistKing(currLocation);
+        Call<TimeDistanceModel> call = request.getTimeDistEngg(currLocation);
         call.enqueue(new Callback<TimeDistanceModel>() {
             @Override
             public void onResponse(Call<TimeDistanceModel> call, Response<TimeDistanceModel> response) {
@@ -152,4 +156,6 @@ public class KingActivity extends AppCompatActivity {
 
 
     }
+
+
 }
