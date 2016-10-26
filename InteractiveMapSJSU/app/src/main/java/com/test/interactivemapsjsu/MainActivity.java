@@ -29,7 +29,7 @@ import com.google.android.gms.location.LocationServices;
 public class MainActivity extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
 
-    private String TAG = "MainActivity";
+    String TAG = "MainActivity";
 
     public static int ACCESS_LOCATION_REQUEST_CODE = 323;
 
@@ -74,19 +74,6 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
-//        @Override
-//        public void onConnected(Bundle connectionHint) {
-//            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-//                    mGoogleApiClient);
-//            if (mLastLocation != null) {
-//                mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-//                mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
-//            }
-//        }
-
-
-
 
 
 

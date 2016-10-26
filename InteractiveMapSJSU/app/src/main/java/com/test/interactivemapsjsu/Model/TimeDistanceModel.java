@@ -42,6 +42,7 @@ public class TimeDistanceModel {
 
     /**
      *
+     *
      * @return
      * The originAddresses
      */
