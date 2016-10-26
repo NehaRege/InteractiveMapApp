@@ -22,6 +22,9 @@ public class KingActivity extends AppCompatActivity {
 
     private ImageView image;
 
+//    lat = 37.335507
+//    long = -121.884999
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
