@@ -46,9 +46,6 @@ public class EnggActivity extends AppCompatActivity {
     private String duration;
     private String distance;
 
-//    lat = 37.335507
-//    long = -121.884999
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,44 +55,17 @@ public class EnggActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-//        latitude = sharedPreferences.getString(getString(R.string.key_location_services_latitude),null);
-//        longitude = sharedPreferences.getString(getString(R.string.key_location_services_longitude),null);
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         lat = sharedPreferences.getString(getString(R.string.location_services_lat),null);
         longi = sharedPreferences.getString(getString(R.string.location_services_long),null);
-
         currLocation = lat+","+longi;
-
-        Log.i(TAG, "****** onCreate: KING Activity ******");
-        Log.i(TAG, "onCreate: lat = "+lat);
-        Log.i(TAG, "onCreate: longi = "+longi);
-
-        Log.i(TAG, "onCreate: currLocation variable = "+currLocation);
 
         loadDistTimeEngg(currLocation);
 
-        Log.i(TAG, "onCreate: loaddisttime function completed");
 
-        if(intent.getStringExtra("king_key").equals("king")) {
-
-            Log.i(TAG, "onCreate: setting text");
-
-            textViewName.setText(R.string.engineering_building_name);
-            textViewAdd.setText(R.string.engg_building_address);
-            image.setImageResource(R.drawable.campusmap);
-
-            Log.i(TAG, "onCreate: before set text --------");
-            Log.i(TAG, "onCreate: duration = "+duration);
-            Log.i(TAG, "onCreate: distance = "+distance);
-
-//            textViewTime.setText(duration);
-//            textViewDist.setText(distance);
-
-
-        }
-
+        textViewName.setText(R.string.engineering_building_name);
+        textViewAdd.setText(R.string.engg_building_address);
+        image.setImageResource(R.drawable.engg);
 
 
     }
@@ -113,7 +83,7 @@ public class EnggActivity extends AppCompatActivity {
     }
 
     public void loadDistTimeEngg(String currLocation) {
-        Log.i(TAG, "loadDistTimeEngg: inside the function");
+
         String BASE_URL = "https://maps.googleapis.com/";
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -147,13 +117,6 @@ public class EnggActivity extends AppCompatActivity {
                 Log.i(TAG, "onFailure: ");
             }
         });
-
-
-
-
-
-
-
 
     }
 

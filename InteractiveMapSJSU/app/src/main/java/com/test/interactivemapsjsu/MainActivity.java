@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
         buttonKing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "KING !!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "King Library !!!", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(MainActivity.this,KingActivity.class);
                 intent.putExtra("king_key","king");
@@ -72,6 +72,27 @@ public class MainActivity extends AppCompatActivity
 
 
 
+            }
+        });
+
+        buttonEng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Engineering Building !!!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,EnggActivity.class);
+                intent.putExtra("engg_key","engg");
+
+                startActivity(intent);
+
+            }
+        });
+
+        buttonGarage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "South Parking Garage !!!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,GarageActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -201,6 +222,12 @@ public class MainActivity extends AppCompatActivity
 
         buttonKing.setVisibility(View.VISIBLE);
         buttonKing.setBackgroundColor(Color.TRANSPARENT);
+
+        buttonEng.setVisibility(View.VISIBLE);
+        buttonEng.setBackgroundColor(Color.TRANSPARENT);
+
+        buttonGarage.setVisibility(View.VISIBLE);
+        buttonGarage.setBackgroundColor(Color.TRANSPARENT);
 
 
 

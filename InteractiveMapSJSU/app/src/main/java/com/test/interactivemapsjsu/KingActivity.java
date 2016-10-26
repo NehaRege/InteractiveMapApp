@@ -45,8 +45,6 @@ public class KingActivity extends AppCompatActivity {
     private String duration;
     private String distance;
 
-//    lat = 37.335507
-//    long = -121.884999
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,10 +54,6 @@ public class KingActivity extends AppCompatActivity {
         initializeViews();
 
         Intent intent = getIntent();
-
-//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-//        latitude = sharedPreferences.getString(getString(R.string.key_location_services_latitude),null);
-//        longitude = sharedPreferences.getString(getString(R.string.key_location_services_longitude),null);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         lat = sharedPreferences.getString(getString(R.string.location_services_lat),null);

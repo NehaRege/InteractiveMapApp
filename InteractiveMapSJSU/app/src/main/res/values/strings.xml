@@ -9,4 +9,6 @@
     <string name="engg_building_address">San José State University Charles W. Davidson College of Engineering, 1 Washington Square, San Jose, CA 95112</string>
     <string name="library_name">King Library</string>
     <string name="library_address">Dr. Martin Luther King, Jr. Library, 150 East San Fernando Street, San Jose, CA 95112</string>
+    <string name="garage_name">South Parking Garage</string>
+    <string name="garage_address">San Jose State University South Garage, 330 South 7th Street, San Jose, CA 95112</string>
 </resources>
