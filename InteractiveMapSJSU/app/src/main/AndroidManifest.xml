@@ -25,11 +25,12 @@
 
         </activity>
 
+        <activity android:name=".StreetViewActivity"/>
+        <activity android:name=".StreetViewPanoramaActivity"/>
+        <activity android:name=".SvActivity"/>
         <activity android:name=".KingActivity" />
         <activity android:name=".EnggActivity"/>
         <activity android:name=".GarageActivity"/>
-        <activity android:name=".SVActivity"/>
-        <activity android:name=".StreetActivity"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
