@@ -2,6 +2,8 @@ package com.test.interactivemapsjsu;
 
 import android.*;
 import android.Manifest;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -13,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -36,7 +39,6 @@ public class MainActivity extends AppCompatActivity
     public Location lastLocation;
     public String latitude, longitude;
 
-
     private Button buttonKing;
     private Button buttonEng;
     private Button buttonGarage;
@@ -53,6 +55,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         setViews();
+
+        handleIntent(getIntent());
+
+
 
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
@@ -106,9 +112,15 @@ public class MainActivity extends AppCompatActivity
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_menu, menu);
 
-        return super.onCreateOptionsMenu(menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+        SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -209,6 +221,30 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+
+
+            if(query.toLowerCase().equals("king")) {
+                Toast.makeText(MainActivity.this,"Searching for "+query,Toast.LENGTH_SHORT).show();
+
+                buttonKing.setVisibility(View.VISIBLE);
+                buttonKing.setBackgroundColor(Color.RED);
+
+
+            }
+
+
+        }
     }
 
     public void setViews() {

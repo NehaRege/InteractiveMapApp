@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -65,7 +66,17 @@ public class EnggActivity extends AppCompatActivity {
 
         textViewName.setText(R.string.engineering_building_name);
         textViewAdd.setText(R.string.engg_building_address);
-        image.setImageResource(R.drawable.engg);
+        image.setImageResource(R.drawable.eng);
+
+
+        buttonStreetView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(EnggActivity.this,StreetActivity.class);
+                intent1.putExtra("key_engg","engg");
+                startActivity(intent1);
+            }
+        });
 
 
     }

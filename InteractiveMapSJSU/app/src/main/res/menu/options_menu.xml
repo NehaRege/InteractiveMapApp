@@ -8,7 +8,9 @@
         android:id="@+id/menu_search"
         android:icon="@android:drawable/ic_menu_search"
         android:title="@string/search_by_building_abbreviation"
-        app:showAsAction="always">
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        >
 
     </item>
 
