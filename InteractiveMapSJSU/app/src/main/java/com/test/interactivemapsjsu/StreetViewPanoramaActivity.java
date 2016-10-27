@@ -13,7 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 /**
  * Created by NehaRege on 10/27/16.
  */
-public class StreetActivity extends AppCompatActivity {
+public class StreetViewPanoramaActivity extends AppCompatActivity {
 
 
 
@@ -40,7 +40,7 @@ public class StreetActivity extends AppCompatActivity {
         // *** IMPORTANT ***
         // StreetViewPanoramaView requires that the Bundle you pass contain _ONLY_
         // StreetViewPanoramaView SDK objects or sub-Bundles.
-        
+
         Bundle mStreetViewBundle = null;
         if (savedInstanceState != null) {
             mStreetViewBundle = savedInstanceState.getBundle(STREETVIEW_BUNDLE_KEY);

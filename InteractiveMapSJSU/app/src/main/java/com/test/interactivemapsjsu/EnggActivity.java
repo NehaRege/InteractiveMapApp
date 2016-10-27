@@ -72,7 +72,7 @@ public class EnggActivity extends AppCompatActivity {
         buttonStreetView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(EnggActivity.this,StreetActivity.class);
+                Intent intent1 = new Intent(EnggActivity.this,StreetViewPanoramaActivity.class);
                 intent1.putExtra("key_engg","engg");
                 startActivity(intent1);
             }

@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.LatLng;
 /**
  * Created by NehaRege on 10/26/16.
  */
-public class SVActivity extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback {
+public class SvActivity extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
