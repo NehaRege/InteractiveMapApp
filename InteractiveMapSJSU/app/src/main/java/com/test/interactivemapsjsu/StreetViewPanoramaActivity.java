@@ -1,5 +1,6 @@
 package com.test.interactivemapsjsu;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.maps.StreetViewPanoramaOptions;
@@ -8,6 +9,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 
 /**
@@ -15,10 +17,21 @@ import android.view.ViewGroup.LayoutParams;
  */
 public class StreetViewPanoramaActivity extends AppCompatActivity {
 
+    String TAG = "PanoramaActivity";
+
+//    StreetViewPanoramaOptions options;
 
 
 
-    private static final LatLng SYDNEY = new LatLng(-33.87365, 151.20689);
+
+    private static final LatLng ENGG = new LatLng(37.335142,-121.881276);
+    private static final LatLng KING = new LatLng(37.335142,-121.881276);
+    private static final LatLng GARAGE = new LatLng(37.335142,-121.881276);
+    private static final LatLng BBC = new LatLng(37.335142,-121.881276);
+    private static final LatLng SU = new LatLng(37.335142,-121.881276);
+    private static final LatLng YUH = new LatLng(37.335142,-121.881276);
+
+    private static final LatLng SYDNEY = new LatLng(37.333474,-121.879916);
 
     private StreetViewPanoramaView mStreetViewPanoramaView;
 
@@ -28,18 +41,91 @@ public class StreetViewPanoramaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+
         StreetViewPanoramaOptions options = new StreetViewPanoramaOptions();
+
         if (savedInstanceState == null) {
-            options.position(SYDNEY);
+
+            if(intent.getStringExtra("key_garage") != null && intent.getStringExtra("key_garage").equals("garage")) {
+
+                options.position(SYDNEY);
+
+            } else if (intent.getStringExtra("key_su") != null && intent.getStringExtra("key_su").equals("su")){
+
+                options.position(SU);
+
+
+            } else if (intent.getStringExtra("key_yuh") != null && intent.getStringExtra("key_yuh").equals("yuh")) {
+                options.position(YUH);
+
+
+            } else if (intent.getStringExtra("key_bbc") != null && intent.getStringExtra("key_bbc").equals("bbc")) {
+                options.position(BBC);
+
+
+            } else if(intent.getStringExtra("key_engg") != null && intent.getStringExtra("key_engg").equals("engg")) {
+                options.position(ENGG);
+
+            } else if(intent.getStringExtra("key_king") != null && intent.getStringExtra("key_king").equals("king")) {
+
+                options.position(KING);
+            }
+
+
         }
+
+
+        Log.i(TAG, "onCreate: intent = "+intent.getStringExtra("key_engg"));
+
+//        if(intent.getStringExtra("key_garage").equals("garage")) {
+//            options = new StreetViewPanoramaOptions();
+//
+//            if (savedInstanceState == null) {
+//                options.position(GARAGE);
+//            }
+//
+//        } else if (intent.getStringExtra("key_su").equals("su")){
+//            options = new StreetViewPanoramaOptions();
+//
+//            if (savedInstanceState == null) {
+//                options.position(SU);
+//            }
+//
+//        } else if (intent.getStringExtra("key_yuh").equals("yuh")) {
+//            options = new StreetViewPanoramaOptions();
+//
+//            if (savedInstanceState == null) {
+//                options.position(YUH);
+//            }
+//        } else if (intent.getStringExtra("key_bbc").equals("bbc")) {
+//            options = new StreetViewPanoramaOptions();
+//
+//            if (savedInstanceState == null) {
+//                options.position(BBC);
+//            }
+//        } else if(intent.getStringExtra("key_engg").equals("engg")) {
+//            options = new StreetViewPanoramaOptions();
+//
+//            if (savedInstanceState == null) {
+//                options.position(ENGG);
+//            }
+//        } else if(intent.getStringExtra("key_king").equals("king")) {
+//            options = new StreetViewPanoramaOptions();
+//
+//            if (savedInstanceState == null) {
+//                options.position(KING);
+//            }
+//        }
+
+
+//        if (savedInstanceState == null) {
+//            options.position(SYDNEY);
+//        }
 
         mStreetViewPanoramaView = new StreetViewPanoramaView(this, options);
         addContentView(mStreetViewPanoramaView,
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-
-        // *** IMPORTANT ***
-        // StreetViewPanoramaView requires that the Bundle you pass contain _ONLY_
-        // StreetViewPanoramaView SDK objects or sub-Bundles.
 
         Bundle mStreetViewBundle = null;
         if (savedInstanceState != null) {

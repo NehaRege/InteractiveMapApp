@@ -1,4 +1,4 @@
-package com.test.interactivemapsjsu;
+package com.test.interactivemapsjsu.BuildingActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,12 +7,16 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.test.interactivemapsjsu.APIService.APIService;
 import com.test.interactivemapsjsu.Model.TimeDistanceModel;
+import com.test.interactivemapsjsu.R;
+import com.test.interactivemapsjsu.StreetViewActivity;
+import com.test.interactivemapsjsu.StreetViewPanoramaActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,12 +25,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by NehaRege on 10/25/16.
+ * Created by NehaRege on 10/27/16.
  */
-public class KingActivity extends AppCompatActivity {
+public class YuhActivity extends AppCompatActivity {
 
-    String TAG = "KingActivity";
-
+    String TAG = "YuhActivity";
 
     private TextView textViewName;
     private TextView textViewAdd;
@@ -45,7 +48,6 @@ public class KingActivity extends AppCompatActivity {
     private String duration;
     private String distance;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,34 +60,24 @@ public class KingActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         lat = sharedPreferences.getString(getString(R.string.location_services_lat),null);
         longi = sharedPreferences.getString(getString(R.string.location_services_long),null);
-
         currLocation = lat+","+longi;
-
-        Log.i(TAG, "****** onCreate: KING Activity ******");
-        Log.i(TAG, "onCreate: lat = "+lat);
-        Log.i(TAG, "onCreate: longi = "+longi);
-
-        Log.i(TAG, "onCreate: currLocation variable = "+currLocation);
 
         loadDistTimeEngg(currLocation);
 
-        Log.i(TAG, "onCreate: loaddisttime function completed");
 
-        if(intent.getStringExtra("king_key").equals("king")) {
-
-            Log.i(TAG, "onCreate: setting text");
-
-            textViewName.setText(R.string.library_name);
-            textViewAdd.setText(R.string.library_address);
-            image.setImageResource(R.drawable.library);
-
-            Log.i(TAG, "onCreate: before set text --------");
-            Log.i(TAG, "onCreate: duration = "+duration);
-            Log.i(TAG, "onCreate: distance = "+distance);
+        textViewName.setText("Yoshihiro Uchida Hall");
+        textViewAdd.setText("Yoshihiro Uchida Hall, San Jose, CA 95112");
+        image.setImageResource(R.drawable.yuh);
 
 
-        }
-
+        buttonStreetView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(YuhActivity.this,StreetViewActivity.class);
+                intent1.putExtra("key_yuh","yuh");
+                startActivity(intent1);
+            }
+        });
 
 
     }
@@ -103,7 +95,7 @@ public class KingActivity extends AppCompatActivity {
     }
 
     public void loadDistTimeEngg(String currLocation) {
-        Log.i(TAG, "loadDistTimeEngg: inside the function");
+
         String BASE_URL = "https://maps.googleapis.com/";
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -111,7 +103,7 @@ public class KingActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         APIService request = retrofit.create(APIService.class);
-        Call<TimeDistanceModel> call = request.getTimeDistKing(currLocation);
+        Call<TimeDistanceModel> call = request.getTimeDistYuh(currLocation);
         call.enqueue(new Callback<TimeDistanceModel>() {
             @Override
             public void onResponse(Call<TimeDistanceModel> call, Response<TimeDistanceModel> response) {
@@ -126,7 +118,6 @@ public class KingActivity extends AppCompatActivity {
                     textViewDist.setText(distance);
                     textViewTime.setText(duration);
 
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -138,12 +129,7 @@ public class KingActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
     }
+
+
 }

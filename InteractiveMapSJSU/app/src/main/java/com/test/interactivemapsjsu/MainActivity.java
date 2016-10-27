@@ -1,6 +1,5 @@
 package com.test.interactivemapsjsu;
 
-import android.*;
 import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
@@ -16,7 +15,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,6 +26,12 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.test.interactivemapsjsu.BuildingActivity.BbcActivity;
+import com.test.interactivemapsjsu.BuildingActivity.EnggActivity;
+import com.test.interactivemapsjsu.BuildingActivity.GarageActivity;
+import com.test.interactivemapsjsu.BuildingActivity.KingActivity;
+import com.test.interactivemapsjsu.BuildingActivity.SuActivity;
+import com.test.interactivemapsjsu.BuildingActivity.YuhActivity;
 
 public class MainActivity extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
@@ -84,7 +88,7 @@ public class MainActivity extends AppCompatActivity
         buttonEng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Engineering Building !!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Engineering Building", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,EnggActivity.class);
                 intent.putExtra("engg_key","engg");
 
@@ -96,8 +100,35 @@ public class MainActivity extends AppCompatActivity
         buttonGarage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "South Parking Garage !!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "South Parking Garage", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,GarageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonBBC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "BBC", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,BbcActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonSU.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "SU", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,SuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonYUH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "YUH", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,YuhActivity.class);
                 startActivity(intent);
             }
         });
@@ -264,6 +295,15 @@ public class MainActivity extends AppCompatActivity
 
         buttonGarage.setVisibility(View.VISIBLE);
         buttonGarage.setBackgroundColor(Color.TRANSPARENT);
+
+        buttonSU.setVisibility(View.VISIBLE);
+        buttonSU.setBackgroundColor(Color.TRANSPARENT);
+
+        buttonYUH.setVisibility(View.VISIBLE);
+        buttonYUH.setBackgroundColor(Color.TRANSPARENT);
+
+        buttonBBC.setVisibility(View.VISIBLE);
+        buttonBBC.setBackgroundColor(Color.TRANSPARENT);
 
 
 

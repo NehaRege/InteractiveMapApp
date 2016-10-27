@@ -1,4 +1,4 @@
-package com.test.interactivemapsjsu;
+package com.test.interactivemapsjsu.BuildingActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,12 +7,16 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.test.interactivemapsjsu.APIService.APIService;
 import com.test.interactivemapsjsu.Model.TimeDistanceModel;
+import com.test.interactivemapsjsu.R;
+import com.test.interactivemapsjsu.StreetViewActivity;
+import com.test.interactivemapsjsu.StreetViewPanoramaActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,13 +25,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by NehaRege on 10/26/16.
+ * Created by NehaRege on 10/27/16.
  */
-public class GarageActivity extends AppCompatActivity {
+public class BbcActivity extends AppCompatActivity {
 
 
-    String TAG = "KingActivity";
-
+    String TAG = "BbcActivity";
 
     private TextView textViewName;
     private TextView textViewAdd;
@@ -63,10 +66,19 @@ public class GarageActivity extends AppCompatActivity {
         loadDistTimeEngg(currLocation);
 
 
-        textViewName.setText(R.string.garage_name);
-        textViewAdd.setText(R.string.garage_address);
-        image.setImageResource(R.drawable.garage);
+        textViewName.setText("BBC");
+        textViewAdd.setText("Boccardo Business Complex, San Jose, CA 95112");
+        image.setImageResource(R.drawable.bbc);
 
+
+        buttonStreetView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(BbcActivity.this,StreetViewActivity.class);
+                intent1.putExtra("key_bbc","bbc");
+                startActivity(intent1);
+            }
+        });
 
 
     }
@@ -92,7 +104,7 @@ public class GarageActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         APIService request = retrofit.create(APIService.class);
-        Call<TimeDistanceModel> call = request.getTimeDistGarage(currLocation);
+        Call<TimeDistanceModel> call = request.getTimeDistBbc(currLocation);
         call.enqueue(new Callback<TimeDistanceModel>() {
             @Override
             public void onResponse(Call<TimeDistanceModel> call, Response<TimeDistanceModel> response) {
@@ -106,7 +118,6 @@ public class GarageActivity extends AppCompatActivity {
 
                     textViewDist.setText(distance);
                     textViewTime.setText(duration);
-
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -28,9 +28,13 @@
         <activity android:name=".StreetViewActivity"/>
         <activity android:name=".StreetViewPanoramaActivity"/>
         <activity android:name=".SvActivity"/>
-        <activity android:name=".KingActivity" />
-        <activity android:name=".EnggActivity"/>
-        <activity android:name=".GarageActivity"/>
+
+        <activity android:name=".BuildingActivity.KingActivity" />
+        <activity android:name=".BuildingActivity.EnggActivity"/>
+        <activity android:name=".BuildingActivity.GarageActivity"/>
+        <activity android:name=".BuildingActivity.BbcActivity"/>
+        <activity android:name=".BuildingActivity.YuhActivity"/>
+        <activity android:name=".BuildingActivity.SuActivity"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
