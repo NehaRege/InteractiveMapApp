@@ -55,6 +55,10 @@ public class BbcActivity extends AppCompatActivity {
         setContentView(R.layout.activity_building_detail);
 
         initializeViews();
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        }
 
         Intent intent = getIntent();
 
@@ -66,7 +70,7 @@ public class BbcActivity extends AppCompatActivity {
         loadDistTimeEngg(currLocation);
 
 
-        textViewName.setText("BBC");
+        textViewName.setText("Boccardo Business Complex");
         textViewAdd.setText("Boccardo Business Complex, San Jose, CA 95112");
         image.setImageResource(R.drawable.bbc);
 

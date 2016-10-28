@@ -25,16 +25,91 @@
 
         </activity>
 
-        <activity android:name=".StreetViewActivity"/>
+        <activity android:name=".StreetViewActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+
+        </activity>
+
         <activity android:name=".StreetViewPanoramaActivity"/>
         <activity android:name=".SvActivity"/>
 
-        <activity android:name=".BuildingActivity.KingActivity" />
-        <activity android:name=".BuildingActivity.EnggActivity"/>
-        <activity android:name=".BuildingActivity.GarageActivity"/>
-        <activity android:name=".BuildingActivity.BbcActivity"/>
-        <activity android:name=".BuildingActivity.YuhActivity"/>
-        <activity android:name=".BuildingActivity.SuActivity"/>
+        <activity android:name=".BuildingActivity.KingActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+
+
+        </activity>
+
+        <activity android:name=".BuildingActivity.EnggActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+
+
+        </activity>
+        <activity android:name=".BuildingActivity.GarageActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+
+
+        </activity>
+
+        <activity android:name=".BuildingActivity.BbcActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+
+
+        </activity>
+
+        <activity android:name=".BuildingActivity.YuhActivity" android:parentActivityName=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+
+
+        </activity>
+
+        <activity android:name=".BuildingActivity.SuActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+
+
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

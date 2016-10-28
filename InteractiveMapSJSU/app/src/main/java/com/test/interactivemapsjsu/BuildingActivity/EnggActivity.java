@@ -54,6 +54,10 @@ public class EnggActivity extends AppCompatActivity {
         setContentView(R.layout.activity_building_detail);
 
         initializeViews();
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        }
 
         Intent intent = getIntent();
 

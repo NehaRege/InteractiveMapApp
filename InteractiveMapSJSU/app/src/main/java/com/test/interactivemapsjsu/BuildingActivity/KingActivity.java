@@ -56,6 +56,11 @@ public class KingActivity extends AppCompatActivity {
 
         initializeViews();
 
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        }
+
         Intent intent = getIntent();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

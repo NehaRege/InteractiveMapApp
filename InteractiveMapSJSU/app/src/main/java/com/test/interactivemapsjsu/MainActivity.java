@@ -62,8 +62,6 @@ public class MainActivity extends AppCompatActivity
 
         handleIntent(getIntent());
 
-
-
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
                 .addConnectionCallbacks(this)
@@ -73,7 +71,9 @@ public class MainActivity extends AppCompatActivity
         buttonKing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "King Library !!!", Toast.LENGTH_SHORT).show();
+
+                buttonKing.setVisibility(View.VISIBLE);
+                buttonKing.setBackgroundColor(Color.TRANSPARENT);
 
                 Intent intent = new Intent(MainActivity.this,KingActivity.class);
                 intent.putExtra("king_key","king");
@@ -88,7 +88,10 @@ public class MainActivity extends AppCompatActivity
         buttonEng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Engineering Building", Toast.LENGTH_SHORT).show();
+
+                buttonEng.setVisibility(View.VISIBLE);
+                buttonEng.setBackgroundColor(Color.TRANSPARENT);
+
                 Intent intent = new Intent(MainActivity.this,EnggActivity.class);
                 intent.putExtra("engg_key","engg");
 
@@ -100,7 +103,10 @@ public class MainActivity extends AppCompatActivity
         buttonGarage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "South Parking Garage", Toast.LENGTH_SHORT).show();
+
+                buttonGarage.setVisibility(View.VISIBLE);
+                buttonGarage.setBackgroundColor(Color.TRANSPARENT);
+
                 Intent intent = new Intent(MainActivity.this,GarageActivity.class);
                 startActivity(intent);
             }
@@ -109,7 +115,10 @@ public class MainActivity extends AppCompatActivity
         buttonBBC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "BBC", Toast.LENGTH_SHORT).show();
+
+                buttonBBC.setVisibility(View.VISIBLE);
+                buttonBBC.setBackgroundColor(Color.TRANSPARENT);
+
                 Intent intent = new Intent(MainActivity.this,BbcActivity.class);
                 startActivity(intent);
             }
@@ -118,7 +127,10 @@ public class MainActivity extends AppCompatActivity
         buttonSU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "SU", Toast.LENGTH_SHORT).show();
+
+                buttonSU.setVisibility(View.VISIBLE);
+                buttonSU.setBackgroundColor(Color.TRANSPARENT);
+
                 Intent intent = new Intent(MainActivity.this,SuActivity.class);
                 startActivity(intent);
             }
@@ -127,7 +139,10 @@ public class MainActivity extends AppCompatActivity
         buttonYUH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "YUH", Toast.LENGTH_SHORT).show();
+
+                buttonYUH.setVisibility(View.VISIBLE);
+                buttonYUH.setBackgroundColor(Color.TRANSPARENT);
+
                 Intent intent = new Intent(MainActivity.this,YuhActivity.class);
                 startActivity(intent);
             }
@@ -160,12 +175,9 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.menu_search:
 
-                Toast.makeText(MainActivity.this, "Searching !!!", Toast.LENGTH_SHORT).show();
-
                 return true;
 
             default:
-
 
                 return super.onOptionsItemSelected(item);
 
@@ -265,13 +277,39 @@ public class MainActivity extends AppCompatActivity
             String query = intent.getStringExtra(SearchManager.QUERY);
 
 
-            if(query.toLowerCase().equals("king")) {
-                Toast.makeText(MainActivity.this,"Searching for "+query,Toast.LENGTH_SHORT).show();
+            if(query.toLowerCase().equals("king library") || query.toLowerCase().equals("king")) {
 
                 buttonKing.setVisibility(View.VISIBLE);
-                buttonKing.setBackgroundColor(Color.RED);
+                buttonKing.setBackgroundResource(R.drawable.ic_red);
 
 
+            } else if(query.toLowerCase().equals("engineering building") || query.toLowerCase().equals("engg")) {
+
+                buttonEng.setVisibility(View.VISIBLE);
+                buttonEng.setBackgroundResource(R.drawable.ic_red);
+
+            } else if(query.toLowerCase().equals("su") || query.toLowerCase().equals("student union")) {
+
+                buttonSU.setVisibility(View.VISIBLE);
+                buttonSU.setBackgroundResource(R.drawable.ic_red);
+
+            } else if(query.toLowerCase().equals("bbc") || query.toLowerCase().equals("Boccardo Business Complex")) {
+
+                buttonBBC.setVisibility(View.VISIBLE);
+                buttonBBC.setBackgroundResource(R.drawable.ic_red);
+
+            } else if(query.toLowerCase().equals("yuh") || query.toLowerCase().equals("yoshihiro uchida hall")) {
+
+                buttonYUH.setVisibility(View.VISIBLE);
+                buttonYUH.setBackgroundResource(R.drawable.ic_red);
+
+            } else if(query.toLowerCase().equals("South Parking Garage")) {
+
+                buttonGarage.setVisibility(View.VISIBLE);
+                buttonGarage.setBackgroundResource(R.drawable.ic_red);
+
+            } else {
+                Toast.makeText(MainActivity.this, "Building not found !", Toast.LENGTH_SHORT).show();
             }
 
 

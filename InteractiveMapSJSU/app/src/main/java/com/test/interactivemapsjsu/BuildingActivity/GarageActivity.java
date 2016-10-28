@@ -56,6 +56,10 @@ public class GarageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_building_detail);
 
         initializeViews();
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        }
 
         final Intent intent = getIntent();
 

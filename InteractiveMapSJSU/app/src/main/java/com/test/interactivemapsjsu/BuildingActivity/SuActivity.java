@@ -58,6 +58,11 @@ public class SuActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        }
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         lat = sharedPreferences.getString(getString(R.string.location_services_lat),null);
         longi = sharedPreferences.getString(getString(R.string.location_services_long),null);
