@@ -196,41 +196,41 @@ public class MainActivity extends AppCompatActivity
                 case "King Library":
 
                     buttonKing.setVisibility(View.VISIBLE);
-                    buttonKing.setBackgroundResource(R.drawable.ic_red);
+                    buttonKing.setBackgroundResource(R.drawable.red1);
 
                     break;
 
                 case "Engineering Building":
 
                     buttonEng.setVisibility(View.VISIBLE);
-                    buttonEng.setBackgroundResource(R.drawable.ic_red);
+                    buttonEng.setBackgroundResource(R.drawable.red1);
 
                     break;
                 case "Yoshihiro Uchida Hall":
 
                     buttonYUH.setVisibility(View.VISIBLE);
-                    buttonYUH.setBackgroundResource(R.drawable.ic_red);
+                    buttonYUH.setBackgroundResource(R.drawable.red1);
 
                     break;
 
                 case "Student Union":
 
                     buttonSU.setVisibility(View.VISIBLE);
-                    buttonSU.setBackgroundResource(R.drawable.ic_red);
+                    buttonSU.setBackgroundResource(R.drawable.red1);
 
                     break;
 
                 case "BBC":
 
                     buttonBBC.setVisibility(View.VISIBLE);
-                    buttonBBC.setBackgroundResource(R.drawable.ic_red);
+                    buttonBBC.setBackgroundResource(R.drawable.red1);
 
                     break;
 
                 case "South Parking Garage":
 
                     buttonGarage.setVisibility(View.VISIBLE);
-                    buttonGarage.setBackgroundResource(R.drawable.ic_red);
+                    buttonGarage.setBackgroundResource(R.drawable.red1);
 
                     break;
 
