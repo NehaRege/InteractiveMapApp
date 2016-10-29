@@ -15,43 +15,47 @@ import com.google.android.gms.maps.model.LatLng;
 /**
  * Created by NehaRege on 10/26/16.
  */
-public class SvActivity extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback {
+public class SvActivity extends AppCompatActivity {
+
+    private static final LatLng SYDNEY = new LatLng(-33.87365, 151.20689);
+
+
+
+
+    private static final LatLng ENGG = new LatLng(37.337274, -121.882982);
+    private static final LatLng ENGG2 = new LatLng(37.337377, -121.882791);
+    private static final LatLng KING = new LatLng(37.335949,-121.886004);
+    private static final LatLng GARAGE = new LatLng(37.332705, -121.880304);
+    private static final LatLng BBC = new LatLng(37.336905, -121.878202);
+    private static final LatLng SU = new LatLng(37.337383, -121.882786);
+    private static final LatLng YUH = new LatLng(37.333278, -121.883799);
+
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_street_view);
+        setContentView(R.layout.activity_sv);
+
+        Intent intent = getIntent();
+
 
         SupportStreetViewPanoramaFragment supportStreetViewPanoramaFragment =
                 (SupportStreetViewPanoramaFragment)
                         getSupportFragmentManager().findFragmentById(R.id.streetviewpanorama);
 
 
-        supportStreetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
+//        supportStreetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
 
-//        mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-//        mMap.addMarker(new MarkerOptions().position(new LatLng(33.748832, -84.38751300000001)).title("Marker"));
-//        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-//        mMap.setTrafficEnabled(true);
-//        CameraPosition cameraPosition = new CameraPosition.Builder()
-//                .zoom(17)                   // Sets the zoom
-//                .target(new LatLng(33.748832, -84.38751300000001))
-//                .bearing(90)                // Sets the orientation of the camera to east
-//                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
-//                .build();                   // Creates a CameraPosition from the builder
-//        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        supportStreetViewPanoramaFragment.getStreetViewPanoramaAsync(new OnStreetViewPanoramaReadyCallback() {
+            @Override
+            public void onStreetViewPanoramaReady(StreetViewPanorama streetViewPanorama) {
+                if(savedInstanceState == null) {
+                    streetViewPanorama.setPosition(ENGG);
+                }
+            }
+        });
 
 
-        Intent intent = getIntent();
-
-
-
-    }
-
-    @Override
-    public void onStreetViewPanoramaReady(StreetViewPanorama streetViewPanorama) {
-
-        streetViewPanorama.setPosition(new LatLng(19.024440,72.867056));
 
 
     }

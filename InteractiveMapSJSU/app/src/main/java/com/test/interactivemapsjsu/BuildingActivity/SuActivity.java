@@ -17,6 +17,7 @@ import com.test.interactivemapsjsu.Model.TimeDistanceModel;
 import com.test.interactivemapsjsu.R;
 import com.test.interactivemapsjsu.StreetViewActivity;
 import com.test.interactivemapsjsu.StreetViewPanoramaActivity;
+import com.test.interactivemapsjsu.SvActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,7 +80,7 @@ public class SuActivity extends AppCompatActivity {
         buttonStreetView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(SuActivity.this,StreetViewActivity.class);
+                Intent intent1 = new Intent(SuActivity.this,StreetViewPanoramaActivity.class);
                 intent1.putExtra("key_su","su");
                 startActivity(intent1);
             }

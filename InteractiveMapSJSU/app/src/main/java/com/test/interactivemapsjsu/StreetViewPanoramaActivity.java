@@ -21,15 +21,24 @@ public class StreetViewPanoramaActivity extends AppCompatActivity {
 
 //    StreetViewPanoramaOptions options;
 
+    private static final LatLng ENGG = new LatLng(37.337274, -121.882982);
+    private static final LatLng ENGG2 = new LatLng(37.337377, -121.882791);
+    private static final LatLng KING = new LatLng(37.335949,-121.886004);
+    private static final LatLng GARAGE = new LatLng(37.332705, -121.880304);
+    private static final LatLng BBC = new LatLng(37.336905, -121.878202);
+    private static final LatLng SU = new LatLng(37.337383, -121.882786);
+    private static final LatLng YUH = new LatLng(37.333278, -121.883799);
 
 
 
-    private static final LatLng ENGG = new LatLng(37.335142,-121.881276);
-    private static final LatLng KING = new LatLng(37.335142,-121.881276);
-    private static final LatLng GARAGE = new LatLng(37.335142,-121.881276);
-    private static final LatLng BBC = new LatLng(37.335142,-121.881276);
-    private static final LatLng SU = new LatLng(37.335142,-121.881276);
-    private static final LatLng YUH = new LatLng(37.335142,-121.881276);
+
+
+//    private static final LatLng ENGG = new LatLng(37.335142,-121.881276);
+//    private static final LatLng KING = new LatLng(37.335142,-121.881276);
+//    private static final LatLng GARAGE = new LatLng(37.335142,-121.881276);
+//    private static final LatLng BBC = new LatLng(37.335142,-121.881276);
+//    private static final LatLng SU = new LatLng(37.335142,-121.881276);
+//    private static final LatLng YUH = new LatLng(37.335142,-121.881276);
 
     private static final LatLng SYDNEY = new LatLng(37.333474,-121.879916);
 
@@ -45,35 +54,35 @@ public class StreetViewPanoramaActivity extends AppCompatActivity {
 
         StreetViewPanoramaOptions options = new StreetViewPanoramaOptions();
 
-//        if (savedInstanceState == null) {
-//
-//            if(intent.getStringExtra("key_garage") != null && intent.getStringExtra("key_garage").equals("garage")) {
-//
-//                options.position(GARAGE);
-//
-//            } else if (intent.getStringExtra("key_su") != null && intent.getStringExtra("key_su").equals("su")){
-//
-//                options.position(SU);
-//
-//
-//            } else if (intent.getStringExtra("key_yuh") != null && intent.getStringExtra("key_yuh").equals("yuh")) {
-//                options.position(YUH);
-//
-//
-//            } else if (intent.getStringExtra("key_bbc") != null && intent.getStringExtra("key_bbc").equals("bbc")) {
-//                options.position(BBC);
-//
-//
-//            } else if(intent.getStringExtra("key_engg") != null && intent.getStringExtra("key_engg").equals("engg")) {
-//                options.position(ENGG);
-//
-//            } else if(intent.getStringExtra("key_king") != null && intent.getStringExtra("key_king").equals("king")) {
-//
-//                options.position(KING);
-//            }
-//
-//
-//        }
+        if (savedInstanceState == null) {
+
+            if(intent.getStringExtra("key_garage") != null && intent.getStringExtra("key_garage").equals("garage")) {
+
+                options.position(GARAGE);
+
+            } else if (intent.getStringExtra("key_su") != null && intent.getStringExtra("key_su").equals("su")){
+
+                options.position(SU);
+
+
+            } else if (intent.getStringExtra("key_yuh") != null && intent.getStringExtra("key_yuh").equals("yuh")) {
+                options.position(YUH);
+
+
+            } else if (intent.getStringExtra("key_bbc") != null && intent.getStringExtra("key_bbc").equals("bbc")) {
+                options.position(BBC);
+
+
+            } else if(intent.getStringExtra("key_engg") != null && intent.getStringExtra("key_engg").equals("engg")) {
+                options.position(ENGG);
+
+            } else if(intent.getStringExtra("key_king") != null && intent.getStringExtra("key_king").equals("king")) {
+
+                options.position(KING);
+            }
+
+
+        }
 
 
         Log.i(TAG, "onCreate: intent = "+intent.getStringExtra("key_engg"));
@@ -119,9 +128,9 @@ public class StreetViewPanoramaActivity extends AppCompatActivity {
 //        }
 
 
-        if (savedInstanceState == null) {
-            options.position(BBC);
-        }
+//        if (savedInstanceState == null) {
+//            options.position(BBC);
+//        }
 
         mStreetViewPanoramaView = new StreetViewPanoramaView(this, options);
         addContentView(mStreetViewPanoramaView,

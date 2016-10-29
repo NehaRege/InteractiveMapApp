@@ -1,6 +1,7 @@
 package com.test.interactivemapsjsu;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SearchEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -38,7 +40,11 @@ import com.test.interactivemapsjsu.BuildingActivity.SuActivity;
 import com.test.interactivemapsjsu.BuildingActivity.YuhActivity;
 
 public class MainActivity extends AppCompatActivity
-        implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
+        implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        SearchManager.OnDismissListener,
+        SearchManager.OnCancelListener,
+        android.widget.SearchView.OnQueryTextListener {
 
     String TAG = "MainActivity";
 
@@ -46,6 +52,8 @@ public class MainActivity extends AppCompatActivity
 
     public Location lastLocation;
     public String latitude, longitude;
+
+    String query;
 
     private Button buttonKing;
     private Button buttonEng;
@@ -73,7 +81,16 @@ public class MainActivity extends AppCompatActivity
 
         setViews();
 
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setCustomView(R.layout.custom_action_bar);
+
+        }
+
+
         handleIntent(getIntent());
+
+
 
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
@@ -327,14 +344,72 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public boolean onSearchRequested(SearchEvent searchEvent) {
+
+        if(query.length() > 0) {
+            if(query.toLowerCase().equals("king")) {
+                buttonKing.setVisibility(View.VISIBLE);
+                buttonKing.setBackgroundResource(R.drawable.ic_red);
+            }
+        }
+
+
+        return super.onSearchRequested(searchEvent);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+
+        if(query.length() > 0) {
+            if(query.toLowerCase().equals("king")) {
+                buttonKing.setVisibility(View.VISIBLE);
+                buttonKing.setBackgroundResource(R.drawable.ic_red);
+            }
+        }
+
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+
+        if(query.length() > 0) {
+            if(query.toLowerCase().equals("king")) {
+                buttonKing.setVisibility(View.VISIBLE);
+                buttonKing.setBackgroundResource(R.drawable.ic_red);
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onCancel() {
+
+        buttonKing.setVisibility(View.VISIBLE);
+        buttonKing.setBackgroundColor(Color.TRANSPARENT);
+
+    }
+
+    @Override
+    public void onDismiss() {
+
+        buttonKing.setVisibility(View.VISIBLE);
+        buttonKing.setBackgroundColor(Color.TRANSPARENT);
+
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
     }
 
     private void handleIntent(Intent intent) {
 
+
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
+            query = intent.getStringExtra(SearchManager.QUERY);
 
 
             if(query.toLowerCase().equals("king library") || query.toLowerCase().equals("king")) {
