@@ -15,6 +15,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -54,6 +56,10 @@ public class MainActivity extends AppCompatActivity
 
     private GoogleApiClient googleApiClient;
 
+    private static final String[] Locations = new String[]{
+            "King Library", "Engineering Building", "Yoshihiro Uchida Hall", "Student Union", "BBC", "South Parking Garage"
+    };
+
     AutoCompleteTextView textView;
     View b;
     String starttext;
@@ -80,6 +86,26 @@ public class MainActivity extends AppCompatActivity
         textView = (AutoCompleteTextView) findViewById(R.id.location_list);
 
         textView.setAdapter(adapter);
+
+
+        textView.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                check();
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                check();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                check();
+            }
+        });
+
 
         buttonKing.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,9 +191,26 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private static final String[] Locations = new String[]{
-            "King Library", "Engineering Building", "Yoshihiro Uchida Hall", "Student Union", "BBC", "South Parking Garage"
-    };
+    public void check() {
+
+        starttext = String.valueOf(textView.getText());
+
+        if (starttext.length()>0) {
+            switch (starttext) {
+                case "King Library":
+
+                    buttonKing.setVisibility(View.VISIBLE);
+                    buttonKing.setBackgroundResource(R.drawable.ic_red);
+
+                    break;
+            }
+        }
+        else
+        {
+            buttonKing.setVisibility(View.VISIBLE);
+            buttonKing.setBackgroundColor(Color.TRANSPARENT);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
