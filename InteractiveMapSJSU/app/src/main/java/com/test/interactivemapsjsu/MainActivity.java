@@ -20,6 +20,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -52,6 +54,11 @@ public class MainActivity extends AppCompatActivity
 
     private GoogleApiClient googleApiClient;
 
+    AutoCompleteTextView textView;
+    View b;
+    String starttext;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +74,12 @@ public class MainActivity extends AppCompatActivity
                 .addConnectionCallbacks(this)
                 .addApi(LocationServices.API)
                 .build();
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Locations);
+        textView = (AutoCompleteTextView) findViewById(R.id.location_list);
+
+        textView.setAdapter(adapter);
 
         buttonKing.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,6 +164,10 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+
+    private static final String[] Locations = new String[]{
+            "King Library", "Engineering Building", "Yoshihiro Uchida Hall", "Student Union", "BBC", "South Parking Garage"
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -324,6 +341,7 @@ public class MainActivity extends AppCompatActivity
         buttonSU = (Button) findViewById(R.id.button_su);
         buttonYUH = (Button) findViewById(R.id.button_yuh);
         buttonKing = (Button) findViewById(R.id.button_king);
+
 
         buttonKing.setVisibility(View.VISIBLE);
         buttonKing.setBackgroundColor(Color.TRANSPARENT);
