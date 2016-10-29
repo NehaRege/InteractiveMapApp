@@ -15,9 +15,7 @@ import android.widget.TextView;
 import com.test.interactivemapsjsu.APIService.APIService;
 import com.test.interactivemapsjsu.Model.TimeDistanceModel;
 import com.test.interactivemapsjsu.R;
-import com.test.interactivemapsjsu.StreetViewActivity;
-import com.test.interactivemapsjsu.StreetViewPanoramaActivity;
-import com.test.interactivemapsjsu.SvActivity;
+import com.test.interactivemapsjsu.StreetViewsActivity.StreetViewPanoramaActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

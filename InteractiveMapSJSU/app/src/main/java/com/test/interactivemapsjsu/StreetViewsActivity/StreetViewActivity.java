@@ -1,13 +1,13 @@
-package com.test.interactivemapsjsu;
+package com.test.interactivemapsjsu.StreetViewsActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+import com.test.interactivemapsjsu.R;
 
 /**
  * Created by NehaRege on 10/27/16.

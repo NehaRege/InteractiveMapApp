@@ -1,16 +1,15 @@
-package com.test.interactivemapsjsu;
+package com.test.interactivemapsjsu.StreetViewsActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
-import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.test.interactivemapsjsu.R;
 
 /**
  * Created by NehaRege on 10/26/16.
@@ -18,9 +17,6 @@ import com.google.android.gms.maps.model.LatLng;
 public class SvActivity extends AppCompatActivity {
 
     private static final LatLng SYDNEY = new LatLng(-33.87365, 151.20689);
-
-
-
 
     private static final LatLng ENGG = new LatLng(37.337274, -121.882982);
     private static final LatLng ENGG2 = new LatLng(37.337377, -121.882791);
@@ -42,9 +38,6 @@ public class SvActivity extends AppCompatActivity {
         SupportStreetViewPanoramaFragment supportStreetViewPanoramaFragment =
                 (SupportStreetViewPanoramaFragment)
                         getSupportFragmentManager().findFragmentById(R.id.streetviewpanorama);
-
-
-//        supportStreetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
 
         supportStreetViewPanoramaFragment.getStreetViewPanoramaAsync(new OnStreetViewPanoramaReadyCallback() {
             @Override

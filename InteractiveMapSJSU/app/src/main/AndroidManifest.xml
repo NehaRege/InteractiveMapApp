@@ -19,21 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
+            <!--<meta-data android:name="android.app.searchable"-->
+                <!--android:resource="@xml/searchable" />-->
 
 
         </activity>
 
-        <activity android:name=".StreetViewActivity"
+        <activity android:name=".StreetViewsActivity.StreetViewActivity"
             android:configChanges=
                 "orientation|screenSize">
 
 
         </activity>
 
-        <activity android:name=".StreetViewPanoramaActivity"/>
-        <activity android:name=".SvActivity"/>
+        <activity android:name=".StreetViewsActivity.StreetViewPanoramaActivity"/>
+        <activity android:name=".StreetViewsActivity.SvActivity"/>
 
         <activity android:name=".BuildingActivity.KingActivity"
             android:parentActivityName=".MainActivity"

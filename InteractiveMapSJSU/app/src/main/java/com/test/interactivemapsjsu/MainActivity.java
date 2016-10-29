@@ -24,6 +24,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SearchEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -41,19 +42,18 @@ import com.test.interactivemapsjsu.BuildingActivity.YuhActivity;
 
 public class MainActivity extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        SearchManager.OnDismissListener,
-        SearchManager.OnCancelListener,
-        android.widget.SearchView.OnQueryTextListener {
+        GoogleApiClient.OnConnectionFailedListener {
 
     String TAG = "MainActivity";
 
     public static int ACCESS_LOCATION_REQUEST_CODE = 323;
 
+    private static final String[] Locations = new String[]{
+            "King Library", "Engineering Building", "Yoshihiro Uchida Hall", "Student Union", "BBC", "South Parking Garage"
+    };
+
     public Location lastLocation;
     public String latitude, longitude;
-
-    String query;
 
     private Button buttonKing;
     private Button buttonEng;
@@ -64,13 +64,8 @@ public class MainActivity extends AppCompatActivity
 
     private GoogleApiClient googleApiClient;
 
-    private static final String[] Locations = new String[]{
-            "King Library", "Engineering Building", "Yoshihiro Uchida Hall", "Student Union", "BBC", "South Parking Garage"
-    };
-
-    AutoCompleteTextView textView;
-    View b;
-    String starttext;
+    private AutoCompleteTextView textView;
+    private String starttext;
 
 
     @Override
@@ -81,30 +76,14 @@ public class MainActivity extends AppCompatActivity
 
         setViews();
 
-        if (getActionBar() != null) {
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-            getActionBar().setCustomView(R.layout.custom_action_bar);
+        actionBarSetUp();
 
-        }
-
-
-        handleIntent(getIntent());
-
-
-
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addConnectionCallbacks(this)
-                .addApi(LocationServices.API)
-                .build();
+        googleApiClientSetUp();
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Locations);
         textView = (AutoCompleteTextView) findViewById(R.id.location_list);
-
         textView.setAdapter(adapter);
-
-
         textView.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -128,8 +107,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                buttonKing.setVisibility(View.VISIBLE);
-                buttonKing.setBackgroundColor(Color.TRANSPARENT);
+//                buttonKing.setVisibility(View.VISIBLE);
+//                buttonKing.setBackgroundColor(Color.TRANSPARENT);
 
                 Intent intent = new Intent(MainActivity.this,KingActivity.class);
                 intent.putExtra("king_key","king");
@@ -145,8 +124,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                buttonEng.setVisibility(View.VISIBLE);
-                buttonEng.setBackgroundColor(Color.TRANSPARENT);
+//                buttonEng.setVisibility(View.VISIBLE);
+//                buttonEng.setBackgroundColor(Color.TRANSPARENT);
 
                 Intent intent = new Intent(MainActivity.this,EnggActivity.class);
                 intent.putExtra("engg_key","engg");
@@ -160,8 +139,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                buttonGarage.setVisibility(View.VISIBLE);
-                buttonGarage.setBackgroundColor(Color.TRANSPARENT);
+//                buttonGarage.setVisibility(View.VISIBLE);
+//                buttonGarage.setBackgroundColor(Color.TRANSPARENT);
 
                 Intent intent = new Intent(MainActivity.this,GarageActivity.class);
                 startActivity(intent);
@@ -172,8 +151,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                buttonBBC.setVisibility(View.VISIBLE);
-                buttonBBC.setBackgroundColor(Color.TRANSPARENT);
+//                buttonBBC.setVisibility(View.VISIBLE);
+//                buttonBBC.setBackgroundColor(Color.TRANSPARENT);
 
                 Intent intent = new Intent(MainActivity.this,BbcActivity.class);
                 startActivity(intent);
@@ -184,8 +163,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                buttonSU.setVisibility(View.VISIBLE);
-                buttonSU.setBackgroundColor(Color.TRANSPARENT);
+//                buttonSU.setVisibility(View.VISIBLE);
+//                buttonSU.setBackgroundColor(Color.TRANSPARENT);
 
                 Intent intent = new Intent(MainActivity.this,SuActivity.class);
                 startActivity(intent);
@@ -196,8 +175,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                buttonYUH.setVisibility(View.VISIBLE);
-                buttonYUH.setBackgroundColor(Color.TRANSPARENT);
+//                buttonYUH.setVisibility(View.VISIBLE);
+//                buttonYUH.setBackgroundColor(Color.TRANSPARENT);
 
                 Intent intent = new Intent(MainActivity.this,YuhActivity.class);
                 startActivity(intent);
@@ -220,46 +199,63 @@ public class MainActivity extends AppCompatActivity
                     buttonKing.setBackgroundResource(R.drawable.ic_red);
 
                     break;
+
+                case "Engineering Building":
+
+                    buttonEng.setVisibility(View.VISIBLE);
+                    buttonEng.setBackgroundResource(R.drawable.ic_red);
+
+                    break;
+                case "Yoshihiro Uchida Hall":
+
+                    buttonYUH.setVisibility(View.VISIBLE);
+                    buttonYUH.setBackgroundResource(R.drawable.ic_red);
+
+                    break;
+
+                case "Student Union":
+
+                    buttonSU.setVisibility(View.VISIBLE);
+                    buttonSU.setBackgroundResource(R.drawable.ic_red);
+
+                    break;
+
+                case "BBC":
+
+                    buttonBBC.setVisibility(View.VISIBLE);
+                    buttonBBC.setBackgroundResource(R.drawable.ic_red);
+
+                    break;
+
+                case "South Parking Garage":
+
+                    buttonGarage.setVisibility(View.VISIBLE);
+                    buttonGarage.setBackgroundResource(R.drawable.ic_red);
+
+                    break;
+
+
             }
-        }
-        else
-        {
+        } else {
+
             buttonKing.setVisibility(View.VISIBLE);
             buttonKing.setBackgroundColor(Color.TRANSPARENT);
+
+            buttonEng.setVisibility(View.VISIBLE);
+            buttonEng.setBackgroundColor(Color.TRANSPARENT);
+
+            buttonSU.setVisibility(View.VISIBLE);
+            buttonSU.setBackgroundColor(Color.TRANSPARENT);
+
+            buttonYUH.setVisibility(View.VISIBLE);
+            buttonYUH.setBackgroundColor(Color.TRANSPARENT);
+
+            buttonGarage.setVisibility(View.VISIBLE);
+            buttonGarage.setBackgroundColor(Color.TRANSPARENT);
+
+            buttonBBC.setVisibility(View.VISIBLE);
+            buttonBBC.setBackgroundColor(Color.TRANSPARENT);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_menu, menu);
-
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-
-        SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
-        return true;
-
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.menu_search:
-
-                return true;
-
-            default:
-
-                return super.onOptionsItemSelected(item);
-
-        }
-
     }
 
     @Override
@@ -343,114 +339,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public boolean onSearchRequested(SearchEvent searchEvent) {
-
-        if(query.length() > 0) {
-            if(query.toLowerCase().equals("king")) {
-                buttonKing.setVisibility(View.VISIBLE);
-                buttonKing.setBackgroundResource(R.drawable.ic_red);
-            }
-        }
-
-
-        return super.onSearchRequested(searchEvent);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String s) {
-
-        if(query.length() > 0) {
-            if(query.toLowerCase().equals("king")) {
-                buttonKing.setVisibility(View.VISIBLE);
-                buttonKing.setBackgroundResource(R.drawable.ic_red);
-            }
-        }
-
-
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String s) {
-
-        if(query.length() > 0) {
-            if(query.toLowerCase().equals("king")) {
-                buttonKing.setVisibility(View.VISIBLE);
-                buttonKing.setBackgroundResource(R.drawable.ic_red);
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public void onCancel() {
-
-        buttonKing.setVisibility(View.VISIBLE);
-        buttonKing.setBackgroundColor(Color.TRANSPARENT);
-
-    }
-
-    @Override
-    public void onDismiss() {
-
-        buttonKing.setVisibility(View.VISIBLE);
-        buttonKing.setBackgroundColor(Color.TRANSPARENT);
-
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-    }
-
-    private void handleIntent(Intent intent) {
-
-
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            query = intent.getStringExtra(SearchManager.QUERY);
-
-
-            if(query.toLowerCase().equals("king library") || query.toLowerCase().equals("king")) {
-
-                buttonKing.setVisibility(View.VISIBLE);
-                buttonKing.setBackgroundResource(R.drawable.ic_red);
-
-
-            } else if(query.toLowerCase().equals("engineering building") || query.toLowerCase().equals("engg")) {
-
-                buttonEng.setVisibility(View.VISIBLE);
-                buttonEng.setBackgroundResource(R.drawable.ic_red);
-
-            } else if(query.toLowerCase().equals("su") || query.toLowerCase().equals("student union")) {
-
-                buttonSU.setVisibility(View.VISIBLE);
-                buttonSU.setBackgroundResource(R.drawable.ic_red);
-
-            } else if(query.toLowerCase().equals("bbc") || query.toLowerCase().equals("Boccardo Business Complex")) {
-
-                buttonBBC.setVisibility(View.VISIBLE);
-                buttonBBC.setBackgroundResource(R.drawable.ic_red);
-
-            } else if(query.toLowerCase().equals("yuh") || query.toLowerCase().equals("yoshihiro uchida hall")) {
-
-                buttonYUH.setVisibility(View.VISIBLE);
-                buttonYUH.setBackgroundResource(R.drawable.ic_red);
-
-            } else if(query.toLowerCase().equals("South Parking Garage")) {
-
-                buttonGarage.setVisibility(View.VISIBLE);
-                buttonGarage.setBackgroundResource(R.drawable.ic_red);
-
-            } else {
-                Toast.makeText(MainActivity.this, "Building not found !", Toast.LENGTH_SHORT).show();
-            }
-
-
-        }
-    }
-
     public void setViews() {
 
         buttonBBC = (Button) findViewById(R.id.button_bbc);
@@ -480,9 +368,25 @@ public class MainActivity extends AppCompatActivity
         buttonBBC.setBackgroundColor(Color.TRANSPARENT);
 
 
+    }
 
+    public void actionBarSetUp(){
+        ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater().inflate(
+                R.layout.custom_action_bar,null
+        );
 
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(actionBarLayout);
+    }
 
-
+    public void googleApiClientSetUp(){
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this,this)
+                .addConnectionCallbacks(this)
+                .addApi(LocationServices.API)
+                .build();
     }
 }

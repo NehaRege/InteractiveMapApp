@@ -1,4 +1,4 @@
-package com.test.interactivemapsjsu;
+package com.test.interactivemapsjsu.StreetViewsActivity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,6 @@ import com.google.android.gms.maps.StreetViewPanoramaView;
 import com.google.android.gms.maps.model.LatLng;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 
 /**
@@ -28,9 +26,6 @@ public class StreetViewPanoramaActivity extends AppCompatActivity {
     private static final LatLng BBC = new LatLng(37.336905, -121.878202);
     private static final LatLng SU = new LatLng(37.337383, -121.882786);
     private static final LatLng YUH = new LatLng(37.333278, -121.883799);
-
-
-
 
 
 //    private static final LatLng ENGG = new LatLng(37.335142,-121.881276);
@@ -81,52 +76,7 @@ public class StreetViewPanoramaActivity extends AppCompatActivity {
                 options.position(KING);
             }
 
-
         }
-
-
-        Log.i(TAG, "onCreate: intent = "+intent.getStringExtra("key_engg"));
-
-//        if(intent.getStringExtra("key_garage").equals("garage")) {
-//            options = new StreetViewPanoramaOptions();
-//
-//            if (savedInstanceState == null) {
-//                options.position(GARAGE);
-//            }
-//
-//        } else if (intent.getStringExtra("key_su").equals("su")){
-//            options = new StreetViewPanoramaOptions();
-//
-//            if (savedInstanceState == null) {
-//                options.position(SU);
-//            }
-//
-//        } else if (intent.getStringExtra("key_yuh").equals("yuh")) {
-//            options = new StreetViewPanoramaOptions();
-//
-//            if (savedInstanceState == null) {
-//                options.position(YUH);
-//            }
-//        } else if (intent.getStringExtra("key_bbc").equals("bbc")) {
-//            options = new StreetViewPanoramaOptions();
-//
-//            if (savedInstanceState == null) {
-//                options.position(BBC);
-//            }
-//        } else if(intent.getStringExtra("key_engg").equals("engg")) {
-//            options = new StreetViewPanoramaOptions();
-//
-//            if (savedInstanceState == null) {
-//                options.position(ENGG);
-//            }
-//        } else if(intent.getStringExtra("key_king").equals("king")) {
-//            options = new StreetViewPanoramaOptions();
-//
-//            if (savedInstanceState == null) {
-//                options.position(KING);
-//            }
-//        }
-
 
 //        if (savedInstanceState == null) {
 //            options.position(BBC);
