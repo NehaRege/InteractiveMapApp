@@ -9,6 +9,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
 
 /**
  * Created by NehaRege on 10/27/16.
@@ -16,8 +17,6 @@ import android.view.ViewGroup.LayoutParams;
 public class StreetViewPanoramaActivity extends AppCompatActivity {
 
     String TAG = "PanoramaActivity";
-
-//    StreetViewPanoramaOptions options;
 
     private static final LatLng ENGG = new LatLng(37.337274, -121.882982);
     private static final LatLng ENGG2 = new LatLng(37.337377, -121.882791);
@@ -28,22 +27,19 @@ public class StreetViewPanoramaActivity extends AppCompatActivity {
     private static final LatLng YUH = new LatLng(37.333278, -121.883799);
 
 
-//    private static final LatLng ENGG = new LatLng(37.335142,-121.881276);
-//    private static final LatLng KING = new LatLng(37.335142,-121.881276);
-//    private static final LatLng GARAGE = new LatLng(37.335142,-121.881276);
-//    private static final LatLng BBC = new LatLng(37.335142,-121.881276);
-//    private static final LatLng SU = new LatLng(37.335142,-121.881276);
-//    private static final LatLng YUH = new LatLng(37.335142,-121.881276);
-
-    private static final LatLng SYDNEY = new LatLng(37.333474,-121.879916);
-
     private StreetViewPanoramaView mStreetViewPanoramaView;
+    private TextView textView;
 
     private static final String STREETVIEW_BUNDLE_KEY = "StreetViewBundleKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        }
 
         Intent intent = getIntent();
 
@@ -54,6 +50,8 @@ public class StreetViewPanoramaActivity extends AppCompatActivity {
             if(intent.getStringExtra("key_garage") != null && intent.getStringExtra("key_garage").equals("garage")) {
 
                 options.position(GARAGE);
+
+//                getSupportActionBar().setTitle("Garage");
 
             } else if (intent.getStringExtra("key_su") != null && intent.getStringExtra("key_su").equals("su")){
 

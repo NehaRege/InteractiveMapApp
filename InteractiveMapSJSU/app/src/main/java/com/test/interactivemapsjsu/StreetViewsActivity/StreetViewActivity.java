@@ -18,24 +18,7 @@ public class StreetViewActivity extends AppCompatActivity {
 
     ImageView imageViewStreet;
 
-//    engg =
-//            37.335142,-121.881276
-//    king =
-//            37.335507,-121.884999
-//    garage =
-//            37.333474,-121.879916
-//    bbc =
-//            37.336561,-121.878723
-//    su=
-//            37.424197,-122.170939
-//    yuh =
-//            37.333770,-121.883388
-
     private String imageURL;
-
-//    private static String imageURL= "https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=37.335142,-121.881276&fov=100&heading=45&pitch=5&key=AIzaSyBUfIU0Ilra4TNEB7w0Em5wNy1i-y3htdA";
-
-//    imageURL = "https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=37.335142,-121.881276&fov=100&heading=45&pitch=5&key=AIzaSyBUfIU0Ilra4TNEB7w0Em5wNy1i-y3htdA";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

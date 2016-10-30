@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity
     private AutoCompleteTextView textView;
     private String starttext;
 
+    double width, height, currentLat, currentLong, x, y, latRad, mercN, newX, newY, plotX, plotY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -306,6 +308,79 @@ public class MainActivity extends AppCompatActivity
 
             latitude = String.valueOf(lastLocation.getLatitude());
             longitude = String.valueOf(lastLocation.getLongitude());
+
+
+
+            width = 412;
+            height = 732;
+
+            currentLat = 37.335771;
+            currentLong = -121.884318;
+
+//            double minLat = -85.05112878;
+//            double minLong = -180;
+//            double maxLat = 85.05112878;
+//            double maxLong = 180;
+
+            width = 412;
+            height = 732;
+            /*currentLat = Double.parseDouble(latitude);
+            currentLong = Double.parseDouble(longitude);*/
+//            currentLatitude = 37.335246;
+//            currentLongitude = -121.883359;
+
+            x = (currentLong+180)*(width/360);
+            latRad = currentLat* Math.PI/180;
+            mercN =  Math.log(Math.tan((Math.PI/4)+(latRad/2)));
+            y = (height/2)-(width*mercN/(2*Math.PI));
+            newX = (x * Math.cos(38.30)) - (y * Math.sin(38.30));
+            newY = (x * Math.sin(38.30)) + (y * Math.cos(38.30));
+            plotX = 60 - ((-110.770674 - newX) * 144910);
+            plotY = 530 - ((307.370716 - newY) * 200678);
+
+
+//            currentLat = Double.parseDouble(latitude);
+//            currentLong = Double.parseDouble(longitude);
+
+
+
+//            latRad = currentLat* Math.PI/180;
+//            mercN =  Math.log(Math.tan((Math.PI/4)+(latRad/2)));
+//            x = (currentLat+180)*(width/360);
+//            y = (height/2)-(width*mercN/(2*Math.PI));
+//            newX = (x * Math.cos(38.25)) - (y * Math.sin(38.25));
+//            newY = (x * Math.sin(38.25)) + (y * Math.cos(38.25));
+//            plotX = 60 - ((-110.770674 - newX) * 144910);
+//            plotY = 530 - ((307.370716 - newY) * 200678);
+
+//            double minLat = -85.05112878;
+//            double minLong = -180;
+//            double maxLat = 85.05112878;
+//            double maxLong = 180;
+//
+//// Map image size (in points)
+//            Double mapHeight = 768.0;
+//            Double mapWidth = 991.0;
+//
+//// Determine the map scale (points per degree)
+//            double xScale = mapWidth/ (maxLong - minLong);
+//            double yScale = mapHeight / (maxLat - minLat);
+//
+//
+//
+//// position of map image for point
+//            double x = (lon - minLong) * xScale;
+//            double  y = - (lat + minLat) * yScale;
+//
+//            System.out.println("final coords: " + x + " " + y);
+
+
+            ImageView iv = new ImageView(getApplicationContext());
+//            iv.setImageDrawable(getResources().getDrawable(R.drawable.marker));
+            iv.layout((int)plotX, (int)plotY,0,0);
+            iv.setVisibility(View.VISIBLE);
+            iv.setImageResource(R.drawable.marker);
+
 
             Log.i(TAG, "saveLocation: lat = "+latitude);
             Log.i(TAG, "saveLocation: longitude = "+longitude);

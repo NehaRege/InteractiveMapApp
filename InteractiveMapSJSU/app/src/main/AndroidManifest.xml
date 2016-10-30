@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:launchMode="singleTop"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />
@@ -32,8 +34,17 @@
 
         </activity>
 
-        <activity android:name=".StreetViewsActivity.StreetViewPanoramaActivity"/>
-        <activity android:name=".StreetViewsActivity.SvActivity"/>
+        <activity android:name=".StreetViewsActivity.StreetViewPanoramaActivity"
+            android:configChanges=
+            "orientation|screenSize">
+
+        </activity>
+
+        <activity android:name=".StreetViewsActivity.SvActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+        </activity>
 
         <activity android:name=".BuildingActivity.KingActivity"
             android:parentActivityName=".MainActivity"
@@ -60,6 +71,7 @@
 
 
         </activity>
+
         <activity android:name=".BuildingActivity.GarageActivity"
             android:parentActivityName=".MainActivity"
             android:configChanges=
@@ -68,8 +80,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
-
-
 
         </activity>
 
@@ -86,7 +96,8 @@
 
         </activity>
 
-        <activity android:name=".BuildingActivity.YuhActivity" android:parentActivityName=".MainActivity"
+        <activity android:name=".BuildingActivity.YuhActivity"
+            android:parentActivityName=".MainActivity"
             android:configChanges=
                 "orientation|screenSize">
 
