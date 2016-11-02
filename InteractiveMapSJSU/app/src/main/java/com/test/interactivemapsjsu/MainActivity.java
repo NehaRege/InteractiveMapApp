@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity
 
             width = 412;
             height = 732;
-
+            
 //            ul = 37.336431;
 //            uln = -121.882544;
 
