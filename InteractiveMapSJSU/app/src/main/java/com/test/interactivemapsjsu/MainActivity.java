@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -29,6 +30,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -69,6 +71,8 @@ public class MainActivity extends AppCompatActivity
     private String starttext;
 
     double width, height, currentLat, currentLong, x, y, latRad, mercN, newX, newY, plotX, plotY;
+
+    double ul, uln, newx, newy, plotx, ploty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -272,6 +276,7 @@ public class MainActivity extends AppCompatActivity
         super.onStop();
     }
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
@@ -291,7 +296,6 @@ public class MainActivity extends AppCompatActivity
 
     private void saveLocation() {
 
-
         if(ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this,
@@ -309,34 +313,65 @@ public class MainActivity extends AppCompatActivity
             latitude = String.valueOf(lastLocation.getLatitude());
             longitude = String.valueOf(lastLocation.getLongitude());
 
-
-
             width = 412;
             height = 732;
 
-            currentLat = 37.335771;
-            currentLong = -121.884318;
+//            ul = 37.336431;
+//            uln = -121.882544;
 
-//            double minLat = -85.05112878;
-//            double minLong = -180;
-//            double maxLat = 85.05112878;
-//            double maxLong = 180;
+            ul = Double.parseDouble(latitude);//user Latitude here
+            uln = Double.parseDouble(longitude); //user Longitude here
 
-            width = 412;
-            height = 732;
-            /*currentLat = Double.parseDouble(latitude);
-            currentLong = Double.parseDouble(longitude);*/
-//            currentLatitude = 37.335246;
-//            currentLongitude = -121.883359;
 
-            x = (currentLong+180)*(width/360);
-            latRad = currentLat* Math.PI/180;
-            mercN =  Math.log(Math.tan((Math.PI/4)+(latRad/2)));
+            x = (uln+180) * (width/360);
+            latRad = ul * Math.PI/180;
+            mercN = Math.log(Math.tan((Math.PI/4)+(latRad/2)));
             y = (height/2)-(width*mercN/(2*Math.PI));
-            newX = (x * Math.cos(38.30)) - (y * Math.sin(38.30));
-            newY = (x * Math.sin(38.30)) + (y * Math.cos(38.30));
-            plotX = 60 - ((-110.770674 - newX) * 144910);
-            plotY = 530 - ((307.370716 - newY) * 200678);
+            newx = (x * Math.cos(38.25)) - (y * Math.sin(38.25));
+            newy = (x * Math.sin(38.25)) + (y * Math.cos(38.25));
+            plotx = 60 - ((-110.770674 - newx) * 144910);
+            ploty = 530 - ((307.370716 - newy) * 200678);
+
+            RelativeLayout rl = (RelativeLayout) findViewById(R.id.CallMe);
+            ImageView iv;
+            RelativeLayout.LayoutParams params;
+
+            iv = new ImageView(this);
+            iv.setBackgroundColor(Color.YELLOW);
+            params = new RelativeLayout.LayoutParams(30, 40);
+           /* params.leftMargin = (int)plotX;
+            params.topMargin = (int)plotY;*/
+            params.leftMargin = 152;
+            params.topMargin = 764;
+            rl.addView(iv, params);
+
+
+//            width = 412;
+//            height = 732;
+//
+//            currentLat = 37.335771;
+//            currentLong = -121.884318;
+//
+////            double minLat = -85.05112878;
+////            double minLong = -180;
+////            double maxLat = 85.05112878;
+////            double maxLong = 180;
+//
+//            width = 412;
+//            height = 732;
+//            /*currentLat = Double.parseDouble(latitude);
+//            currentLong = Double.parseDouble(longitude);*/
+////            currentLatitude = 37.335246;
+////            currentLongitude = -121.883359;
+//
+//            x = (currentLong+180)*(width/360);
+//            latRad = currentLat* Math.PI/180;
+//            mercN =  Math.log(Math.tan((Math.PI/4)+(latRad/2)));
+//            y = (height/2)-(width*mercN/(2*Math.PI));
+//            newX = (x * Math.cos(38.30)) - (y * Math.sin(38.30));
+//            newY = (x * Math.sin(38.30)) + (y * Math.cos(38.30));
+//            plotX = 60 - ((-110.770674 - newX) * 144910);
+//            plotY = 530 - ((307.370716 - newY) * 200678);
 
 
 //            currentLat = Double.parseDouble(latitude);
@@ -375,11 +410,11 @@ public class MainActivity extends AppCompatActivity
 //            System.out.println("final coords: " + x + " " + y);
 
 
-            ImageView iv = new ImageView(getApplicationContext());
-//            iv.setImageDrawable(getResources().getDrawable(R.drawable.marker));
-            iv.layout((int)plotX, (int)plotY,0,0);
-            iv.setVisibility(View.VISIBLE);
-            iv.setImageResource(R.drawable.marker);
+//            ImageView iv = new ImageView(getApplicationContext());
+////            iv.setImageDrawable(getResources().getDrawable(R.drawable.marker));
+//            iv.layout((int)plotX, (int)plotY,0,0);
+//            iv.setVisibility(View.VISIBLE);
+//            iv.setImageResource(R.drawable.marker);
 
 
             Log.i(TAG, "saveLocation: lat = "+latitude);
