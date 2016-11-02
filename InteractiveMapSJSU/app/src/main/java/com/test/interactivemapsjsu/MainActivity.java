@@ -337,7 +337,7 @@ public class MainActivity extends AppCompatActivity
             RelativeLayout.LayoutParams params;
 
             iv = new ImageView(this);
-            iv.setBackgroundColor(Color.YELLOW);
+            iv.setBackgroundColor(Color.BLUE);
             params = new RelativeLayout.LayoutParams(30, 40);
            /* params.leftMargin = (int)plotX;
             params.topMargin = (int)plotY;*/
