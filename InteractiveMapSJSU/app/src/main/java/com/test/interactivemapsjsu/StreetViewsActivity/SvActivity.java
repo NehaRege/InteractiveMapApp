@@ -15,9 +15,7 @@ import com.test.interactivemapsjsu.R;
  * Created by NehaRege on 10/26/16.
  */
 public class SvActivity extends AppCompatActivity {
-
-    private static final LatLng SYDNEY = new LatLng(-33.87365, 151.20689);
-
+    
     private static final LatLng ENGG = new LatLng(37.337274, -121.882982);
     private static final LatLng ENGG2 = new LatLng(37.337377, -121.882791);
     private static final LatLng KING = new LatLng(37.335949,-121.886004);
