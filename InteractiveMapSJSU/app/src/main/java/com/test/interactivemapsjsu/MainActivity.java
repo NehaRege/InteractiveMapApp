@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
 
     public static int ACCESS_LOCATION_REQUEST_CODE = 323;
 
-    private static final String[] Locations = new String[]{
+    private static final String[] LOCATIONS = new String[]{
             "King Library", "Engineering Building", "Yoshihiro Uchida Hall", "Student Union", "BBC", "South Parking Garage"
     };
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity
     private AutoCompleteTextView textView;
     private String starttext;
 
-    double width, height, currentLat, currentLong, x, y, latRad, mercN, newX, newY, plotX, plotY;
+    double width, height, currentLat, currentLong, x, y, latRad, m;
 
     double newx, newy, plotx, ploty;
 
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
         googleApiClientSetUp();
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Locations);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, LOCATIONS);
         textView = (AutoCompleteTextView) findViewById(R.id.location_list);
         textView.setAdapter(adapter);
         textView.addTextChangedListener(new TextWatcher() {
@@ -319,6 +319,9 @@ public class MainActivity extends AppCompatActivity
             width = 412;
             height = 732;
 
+//            currentLat = 37.335924;
+//            currentLong = -121.879362;
+
             currentLat = Double.parseDouble(latitude);
             currentLong = Double.parseDouble(longitude);
 
@@ -326,9 +329,9 @@ public class MainActivity extends AppCompatActivity
 
             latRad = currentLat * Math.PI/180;
 
-            mercN = Math.log(Math.tan((Math.PI/4)+(latRad/2)));
+            m = Math.log(Math.tan((Math.PI/4)+(latRad/2)));
 
-            y = (height/2)-(width*mercN/(2*Math.PI));
+            y = (height/2)-(width*m/(2*Math.PI));
 
             newx = (x * Math.cos(38.25)) - (y * Math.sin(38.25));
             newy = (x * Math.sin(38.25)) + (y * Math.cos(38.25));
