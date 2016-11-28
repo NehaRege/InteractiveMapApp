@@ -1,1 +1,1 @@
-# sjApp
+# Interactive SJSU Map
