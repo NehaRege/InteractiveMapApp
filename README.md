@@ -15,4 +15,14 @@ Interactive San Jose State University Campus map
 <br>
 </br>
 
-![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screen%20Shot%202016-10-29%20at%207.20.35%20PM.png)  ![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screen%20Shot%202016-10-29%20at%207.20.54%20PM.png)  ![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screenshot_20161029-192128.png)  ![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screenshot_20161029-192148.png)  ![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screenshot_20161029-192211.png)  ![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screenshot_20161029-192226.png)  
+![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screen%20Shot%202016-10-29%20at%207.20.35%20PM.png)
+<br></br>
+![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screen%20Shot%202016-10-29%20at%207.20.54%20PM.png)
+<br></br>
+![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screenshot_20161029-192128.png)
+<br></br>
+![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screenshot_20161029-192148.png)  
+<br></br>
+![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screenshot_20161029-192211.png)  
+<br></br>
+![ScreenShot](https://github.com/NehaRege/InteractiveMapSJSU/blob/master/Screenshot_20161029-192226.png)  
