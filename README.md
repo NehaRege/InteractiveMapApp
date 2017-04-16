@@ -1,7 +1,7 @@
 # Interactive SJSU Map
 <h3>App Info</h3>
 
-Interactive San Jose State University Campus map
+Android application to help the user navigate through the San Jose State University Campus.
 
 <h3>App Features and Technologies:</h3>
 <ul>
